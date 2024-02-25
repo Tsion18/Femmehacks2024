@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moviefinder2/moviesearch.dart';
 import 'movie_list_view.dart';
 import 'movie_service.dart';
 import 'models/movie.dart';
@@ -61,10 +62,20 @@ class _MovieExplorerHomePageState extends State<MovieExplorerHomePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-          Icon(Icons.movie),
-          Text('Movie Explorer')
-          ],),
-      ),
+            Icon(Icons.movie),
+            Text('Movie Explorer'),
+        ],),
+
+        actions: <Widget>[
+        IconButton(
+        icon: Icon(Icons.search),
+      onPressed: () {
+        showSearch(context: context, delegate: MovieSearch(movies));
+      },
+    ),
+  ],
+),
+
       body: MovieListView(movies: movies),
     );
   }
